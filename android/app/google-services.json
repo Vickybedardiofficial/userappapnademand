@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "351307071676",
+    "project_id": "apnademand-cb47f",
+    "storage_bucket": "apnademand-cb47f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351307071676:android:3af4637384924cad1390b9",
+        "android_client_info": {
+          "package_name": "com.user.demanduserapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT3KzaiENFqm_B5UvimJ2P1_wyYgBsLhQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

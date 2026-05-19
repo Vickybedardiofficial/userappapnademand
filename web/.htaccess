@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+
+  # Do NOT rewrite API requests - pass through to backend
+  RewriteCond %{REQUEST_URI} ^/api/ [OR]
+  RewriteCond %{REQUEST_URI} ^/api [OR]
+  RewriteCond %{REQUEST_URI} ^/broadcasting/ [OR]
+
+  # Do NOT rewrite actual files and directories
+  RewriteCond %{REQUEST_FILENAME} !-f [AND]
+  RewriteCond %{REQUEST_FILENAME} !-d [AND]
+  RewriteCond %{REQUEST_FILENAME} !-l
+
+  # Everything else goes to index.html
+  RewriteRule . /index.html [L]
+
+</IfModule>

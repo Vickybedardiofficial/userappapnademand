@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-563VD5K3');</script>
+<!-- End Google Tag Manager -->
+  <link rel="canonical" href="https://apnademand.com/" />
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A Multi-vendor Food. Grocery, eCommerce, Pharmacy & Parcel service.">
+
+  <!--For demo only-->
+<!--  <link rel="canonical" href="https://apnademand.com/" />-->
+<!--  <meta name="robots" content="nofollow, noindex, max-snippet:1, max-video-preview:1, max-image-preview:standard">-->
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ApnaDemand">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <meta name="google-signin-client_id" content="491987943015-agln6biv84krpnngdphj87jkko7r9lb8.apps.googleusercontent.com">
+
+  <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+
+  <title>ApnaDemand</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="application/javascript" src="/assets/packages/flutter_inappwebview_web/assets/web/web_support.js" defer></script>
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = {{flutter_service_worker_version}};
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js?version=3.8.0" defer></script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-563VD5K3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <!-- This script installs service_worker.js to provide PWA functionality to
+       application. For more information, see:
+       https://developers.google.com/web/fundamentals/primers/service-workers -->
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNfL9Wdes1bjoGdQ4yOG1BpsQD0CqIj0k"></script>
+<!--  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>-->
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
+
+<!--  <div class="center">-->
+<!--    <img src="logo.png" alt = "logo" width="300px" />-->
+<!--    <br>-->
+<!--    <div class="loader" style="width:300px;text-align: center;"><div class="continuous-4"></div></div>-->
+<!--  </div>-->
+
+  <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        .preloader {
+            width: 100%;
+            height: 100vh;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #FF8F00 0%, #FFB300 40%, #FFD54F 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .preloader .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            filter: blur(40px);
+        }
+        
+        .preloader .orb-1 {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: -10%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .preloader .orb-2 {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            right: -5%;
+            animation: float 10s ease-in-out infinite 2s;
+        }
+        
+        .preloader .orb-3 {
+            width: 100px;
+            height: 100px;
+            top: 40%;
+            right: 20%;
+            animation: float 6s ease-in-out infinite 1s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
+        
+        .preloader .logo-wrapper {
+            position: relative;
+            margin-bottom: 32px;
+            animation: scaleIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        
+        @keyframes scaleIn {
+            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        
+        .preloader .logo-main {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 20px 60px rgba(0,0,0,0.2),
+                0 0 0 20px rgba(255,255,255,0.1),
+                0 0 0 40px rgba(255,255,255,0.05);
+            position: relative;
+            transform: rotate(3deg);
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes logoPulse {
+            0%, 100% { transform: rotate(3deg) scale(1); }
+            50% { transform: rotate(-3deg) scale(1.05); }
+        }
+        
+        .preloader .logo-icon {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .preloader .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(255, 179, 0, 0.3));
+        }
+        
+        .preloader .time-badge {
+            position: absolute;
+            bottom: -8px;
+            right: -8px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #004080, #005A9C);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 90, 156, 0.4);
+            border: 4px solid white;
+            animation: badgeBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes badgeBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .preloader .time-badge .number {
+            font-size: 18px;
+            font-weight: 900;
+            color: white;
+            line-height: 1;
+        }
+        
+        .preloader .time-badge .text {
+            font-size: 8px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .preloader .brand-name {
+            font-size: 46px;
+            font-weight: 900;
+            color: white;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: slideUp 0.6s ease-out 0.4s forwards;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .preloader .tagline {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 48px;
+            opacity: 0;
+            animation: slideUp 0.6s ease-out 0.6s forwards;
+        }
+        
+        .preloader .loader-container {
+            width: 200px;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: slideUp 0.6s ease-out 0.8s forwards;
+        }
+        
+        .preloader .loader-bar {
+            height: 100%;
+            width: 30%;
+            background: white;
+            border-radius: 10px;
+            animation: loadProgress 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+            position: relative;
+        }
+        
+        @keyframes loadProgress {
+            0% { left: -30%; }
+            100% { left: 100%; }
+        }
+        
+        .preloader .loader-text {
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+            opacity: 0;
+            animation: slideUp 0.6s ease-out 1s forwards;
+        }
+        
+        .preloader .bottom-info {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            animation: slideUp 0.6s ease-out 1.2s forwards;
+        }
+        
+        .preloader .bottom-info span {
+            font-size: 11px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+        }
+        
+        .preloader .bottom-info .dot {
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+        }
+        
+        .preloader .bottom-info i {
+            color: rgba(255,255,255,0.9);
+            font-size: 10px;
+        }
+  </style>
+
+  <div class="preloader">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      
+      <div class="logo-wrapper">
+          <div class="logo-main">
+              <div class="logo-icon">
+                  <img src="favicon.png" alt="ApnaDemand">
+              </div>
+              <div class="time-badge">
+                  <span class="number">10</span>
+                  <span class="text">min</span>
+              </div>
+          </div>
+      </div>
+      
+      <h1 class="brand-name">ApnaDemand</h1>
+      
+      <p class="tagline">Everything On Demand</p>
+      
+      <div class="loader-container">
+          <div class="loader-bar"></div>
+      </div>
+      <p class="loader-text">Loading experience...</p>
+      
+      <div class="bottom-info">
+          <i class="fas fa-bolt"></i>
+          <span>Food & Grocery</span>
+          <div class="dot"></div>
+          <span>Pharmacy & Shops</span>
+          <div class="dot"></div>
+          <span>Instant Parcel</span>
+      </div>
+  </div>
+
+  <header class="header">
+    <div class="header-container d-flex align-items-center justify-content-between">
+      <div class="header-start d-flex gap-5 align-items-center">
+        <img class="logo" src="logo.png" alt="">
+        <div class="placeholder placeholder-wide"></div>
+        <div class="placeholder"></div>
+        <div class="placeholder"></div>
+        <div class="placeholder"></div>
+      </div>
+      <div class="header-end d-flex gap-5">
+        <div class="placeholder"></div>
+        <div class="placeholder"></div>
+        <div class="placeholder"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Script Goes Here -->
+  <script>
+    // Check if localStorage is supported in the browser
+      if (typeof(Storage) !== "undefined") {
+        // Get the item from localStorage
+        var itemValue = localStorage.getItem("flutter.apnademand_theme");
+        // Check if the item exists
+        if (itemValue !== null) {
+          // Check the value of the item
+          if (itemValue === "true") {
+            // If the value is "true", add a class to the body
+            document.body.classList.add("theme-dark");
+          } else {
+            // If the value is not "true", remove the class from the body
+            document.body.classList.remove("theme-light");
+          }
+        } else {
+          console.log("Item not found in localStorage");
+        }
+      } else {
+        console.log("localStorage is not supported in this browser");
+      }
+
+  </script>
+
+  <script>
+    document.querySelectorAll("img.svg").forEach(function (img) {
+    var imgID = img.getAttribute("id");
+    var imgClass = img.getAttribute("class");
+    var imgURL = img.getAttribute("src");
+    // Create a new XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", imgURL, true);
+    // Set the responseType to "document" to parse the response as an XML document
+    xhr.responseType = "document";
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        var data = xhr.response;
+        // Get the SVG tag from the response, ignore the rest
+        var svg = data.querySelector("svg");
+        // Add replaced image's ID to the new SVG
+        if (typeof imgID !== "undefined") {
+          svg.setAttribute("id", imgID);
+        }
+        // Add replaced image's classes to the new SVG
+        if (typeof imgClass !== "undefined") {
+          svg.setAttribute("class", imgClass + " replaced-svg");
+        }
+        // Remove any invalid XML tags
+        svg.removeAttribute("xmlns:a");
+        // Check if the viewport is set; set it if not
+        if (!svg.getAttribute("viewBox") && svg.getAttribute("height") && svg.getAttribute("width")) {
+          svg.setAttribute("viewBox", "0 0 " + svg.getAttribute("height") + " " + svg.getAttribute("width"));
+        }
+        // Replace the image with the new SVG
+        img.parentNode.replaceChild(svg, img);
+      }
+    };
+    xhr.send();
+  });
+  </script>
+
+<!--  <script>-->
+<!--    {{flutter_bootstrap_js}}-->
+<!--  </script>-->
+
+  <script>
+    window.addEventListener('load', function(ev) {
+       {{flutter_js}}
+       {{flutter_build_config}}
+
+       _flutter.loader.load({
+         serviceWorker: {
+           serviceWorkerVersion: {{flutter_service_worker_version}},
+         },
+         onEntrypointLoaded: function(engineInitializer) {
+         let config = { renderer: 'html' };
+           engineInitializer.initializeEngine(config).then(function(appRunner) {
+             if(document.getElementById('splash'))
+               document.getElementById('splash').remove();
+             appRunner.runApp();
+           });
+         }
+       });
+     });
+  </script>
+
+  <script>
+    // Delay the removal of the preloader by 500 milliseconds
+    function removePreloader() {
+      const preloader = document.querySelector('.preloader');
+      if (preloader) {
+        preloader.remove();
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-analytics.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyByJRiuHB7LJo6MvvRBVSjWjw7H9gqB9vw",
+      authDomain: "apnademand-cb47f.firebaseapp.com",
+      projectId: "apnademand-cb47f",
+      storageBucket: "apnademand-cb47f.firebasestorage.app",
+      messagingSenderId: "351307071676",
+      appId: "1:351307071676:web:fae3817d9d3c8aed1390b9",
+      measurementId: "G-DLQMC0RNS6"
+    };
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+
+</body>
+</html>

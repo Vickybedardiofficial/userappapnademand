@@ -24,7 +24,7 @@ class PusherHelper{
     PusherChannelsOptions testOptions = PusherChannelsOptions.fromHost(
       host: Get.find<SplashController>().configModel?.websocketUrl ?? '192.168.1.62',
       scheme: 'ws',
-      key: '6ammart',
+      key: 'apnademand',
       port: 6001,
     );
 

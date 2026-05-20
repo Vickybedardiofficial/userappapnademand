@@ -242,6 +242,8 @@ class VerificationScreenState extends State<VerificationScreen> {
                     } else {
                       verificationController.verifyToken(phone: _number, email: _email).then((value) {
                         if(value.isSuccess) {
+                          if(!mounted) return;
+                          // ignore: use_build_context_synchronously
                           if(ResponsiveHelper.isDesktop(context)){
                             Get.back();
                             Get.dialog(Center(child: NewPassScreen(resetToken: verificationController.verificationCode, number : _number, email: _email, fromPasswordChange: false, fromDialog: true )));

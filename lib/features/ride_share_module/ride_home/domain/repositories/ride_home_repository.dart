@@ -1,7 +1,7 @@
    
 
 import '../../../../../api/api_client.dart';
-import 'rideHome_repository_interface.dart';
+import 'ride_home_repository_interface.dart';
 
 class RideHomeRepository implements RideHomeRepositoryInterface {
   final ApiClient apiClient;

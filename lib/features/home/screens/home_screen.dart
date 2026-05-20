@@ -13,7 +13,7 @@ import 'package:apna_demand/features/flash_sale/controllers/flash_sale_controlle
 import 'package:apna_demand/features/location/controllers/location_controller.dart';
 import 'package:apna_demand/features/notification/controllers/notification_controller.dart';
 import 'package:apna_demand/features/item/controllers/item_controller.dart';
-import 'package:apna_demand/features/ride_share_module/ride_home/controllers/rideHome_controller.dart';
+import 'package:apna_demand/features/ride_share_module/ride_home/controllers/ride_home_controller.dart';
 import 'package:apna_demand/features/ride_share_module/ride_home/screens/biding_list_screen.dart';
 import 'package:apna_demand/features/ride_share_module/ride_home/screens/ride_home_screen.dart';
 import 'package:apna_demand/features/ride_share_module/ride_order/controllers/ride_controller.dart';

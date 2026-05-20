@@ -96,6 +96,7 @@ class AddressBottomSheetWidget extends StatelessWidget {
                     alignment: addressController.addressList != null && addressController.addressList!.isEmpty && !fromDialog ? Alignment.center : Alignment.topCenter,
                     child: TextButton.icon(
                       onPressed: (){
+                        final BuildContext currentContext = context;
                         Get.find<LocationController>().checkPermission(() async {
                           Get.dialog(const CustomLoaderWidget(), barrierDismissible: false);
                           AddressModel address = await Get.find<LocationController>().getCurrentLocation(true);
@@ -112,12 +113,16 @@ class AddressBottomSheetWidget extends StatelessWidget {
                             Get.back();
                             if(ResponsiveHelper.isDesktop(Get.context)) {
                               Get.find<SplashController>().saveWebSuggestedLocationStatus(true);
-                              showGeneralDialog(context: context, pageBuilder: (_,_,_) {
-                                return const SizedBox(
-                                    height: 300, width: 300,
-                                    child: PickMapScreen(fromSignUp: false, canRoute: false, fromAddAddress: true, route: null),
-                                );
-                              });
+                              // ignore: use_build_context_synchronously
+                              if (Navigator.canPop(currentContext)) {
+                                // ignore: use_build_context_synchronously
+                                showGeneralDialog(context: currentContext, pageBuilder: (_,_,_) {
+                                  return const SizedBox(
+                                      height: 300, width: 300,
+                                      child: PickMapScreen(fromSignUp: false, canRoute: false, fromAddAddress: true, route: null),
+                                  );
+                                });
+                              }
                             }else {
                               Get.toNamed(RouteHelper.getPickMapRoute(RouteHelper.accessLocation, false));
                             }

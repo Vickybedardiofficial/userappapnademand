@@ -102,7 +102,7 @@ class _StoreScreenState extends State<StoreScreen> {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
-        print('===did pop: $didPop, result: $result');
+        debugPrint('===did pop: $didPop, result: $result');
         if(Get.find<SplashController>().deeplinkRoute != null) {
           Get.find<SplashController>().setDeeplink(null);
           Get.offAllNamed(RouteHelper.getInitialRoute());
@@ -122,7 +122,7 @@ class _StoreScreenState extends State<StoreScreen> {
               store = storeController.store;
               storeController.setCategoryList();
 
-              print('=====> store zone id: ${store!.zoneId}, schedule length: ${store.schedules != null ? store.schedules!.length : 'null'}');
+              debugPrint('=====> store zone id: ${store!.zoneId}, schedule length: ${store.schedules != null ? store.schedules!.length : 'null'}');
             }
 
             return (storeController.store != null && storeController.store!.name != null && categoryController.categoryList != null) ? CustomScrollView(

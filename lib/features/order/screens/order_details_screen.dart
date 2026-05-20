@@ -58,6 +58,7 @@ class OrderDetailsScreenState extends State<OrderDetailsScreen> {
           if(!mounted) {
             return;
           }
+          // ignore: use_build_context_synchronously
           showAnimatedDialog(context, OfflineSuccessDialog(orderId: widget.orderId));
         });
       }

@@ -60,6 +60,28 @@ class AuthService implements AuthServiceInterface{
   }
 
   @override
+  Future<ResponseModel> sendOtp({required String emailOrPhone}) async {
+    Response response = await authRepositoryInterface.sendOtp(emailOrPhone: emailOrPhone);
+    if (response.statusCode == 200) {
+      return ResponseModel(true, 'OTP sent successfully');
+    } else {
+      return ResponseModel(false, response.statusText);
+    }
+  }
+
+  @override
+  Future<ResponseModel> verifyOtp({required String emailOrPhone, required String otp, bool alreadyInApp = false}) async {
+    Response response = await authRepositoryInterface.verifyOtp(emailOrPhone: emailOrPhone, otp: otp);
+    if (response.statusCode == 200) {
+      AuthResponseModel authResponse = AuthResponseModel.fromJson(response.body);
+      await _updateHeaderFunctionality(authResponse, alreadyInApp: alreadyInApp);
+      return ResponseModel(true, authResponse.token??'', authResponseModel: authResponse);
+    } else {
+      return ResponseModel(false, response.statusText);
+    }
+  }
+
+  @override
   Future<ResponseModel> guestLogin() async {
     return await authRepositoryInterface.guestLogin();
   }

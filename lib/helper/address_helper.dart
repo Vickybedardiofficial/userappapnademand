@@ -20,7 +20,7 @@ class AddressHelper {
       isInRideModule = isRide;
       isInServiceModule = isService;
     }catch(_) {}
-    print('======== address.zoneId: ${address.zoneId} // ride selected: $isInRideModule // is ride = $isInServiceModule');
+    debugPrint('======== address.zoneId: ${address.zoneId} // ride selected: $isInRideModule // is ride = $isInServiceModule');
 
     Get.find<ApiClient>().updateHeader(
       sharedPreferences.getString(AppConstants.token),

@@ -43,9 +43,9 @@ class LinkConverter{
 
   static Future<void> navigateFromLink(String? link, {Uri? uri}) async {
     if(link != null) {
-      print('====linked route config: ${Get.find<SplashController>().configModel}');
+      debugPrint('====linked route config: ${Get.find<SplashController>().configModel}');
       if(Get.find<SplashController>().configModel == null) {
-        print('======config data call from link converter helper');
+        debugPrint('======config data call from link converter helper');
        await Get.find<SplashController>().getConfigData(notificationBody: null, canRoute: false);
       }
 
@@ -67,7 +67,7 @@ class LinkConverter{
         String page = uri.queryParameters['page'] ?? '';
         String slug = link.split('/').last;
         Future.delayed(const Duration(milliseconds: 500), () {
-          print('======store route parameters: storeID: $storeID, moduleId: $moduleId, page: $page, slug: $slug');
+          debugPrint('======store route parameters: storeID: $storeID, moduleId: $moduleId, page: $page, slug: $slug');
           Get.toNamed(RouteHelper.getStoreRoute(id: storeID, page: page, slug: slug, moduleId: moduleId, fromDeeplink: true));
         });
       } else if(link.startsWith(RouteHelper.itemDetails) && !GetPlatform.isWeb) {

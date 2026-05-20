@@ -313,9 +313,9 @@ class _DeliverySectionState extends State<DeliverySection> {
                 );
                 if(widget.checkoutController.contactPersonAddressController.text.isNotEmpty) {
                   Future.delayed(const Duration(milliseconds: 200) , (){
-                    if(mounted) {
-                      FocusScope.of(context).requestFocus(widget.checkoutController.streetNode);
-                    }
+                    if(!mounted) return;
+                    // ignore: use_build_context_synchronously
+                    FocusScope.of(context).requestFocus(widget.checkoutController.streetNode);
                   });
                 }
               },

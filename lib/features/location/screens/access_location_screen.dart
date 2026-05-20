@@ -165,6 +165,7 @@ class BottomButton extends StatelessWidget {
       CustomButton(
         buttonText: 'user_current_location'.tr,
         onPressed: () async {
+          final BuildContext currentContext = context;
           Get.find<LocationController>().checkPermission(() async {
             Get.dialog(const CustomLoaderWidget(), barrierDismissible: false);
             AddressModel address = await Get.find<LocationController>().getCurrentLocation(true);
@@ -176,7 +177,9 @@ class BottomButton extends StatelessWidget {
             }else {
               Get.back();
               if(ResponsiveHelper.isDesktop(Get.context)) {
-                showGeneralDialog(context: context, pageBuilder: (_,_,_) {
+                if(!currentContext.mounted) return;
+                // ignore: use_build_context_synchronously
+                showGeneralDialog(context: currentContext, pageBuilder: (_,_,_) {
                   return SizedBox(
                       height: 300, width: 300,
                       child: PickMapScreen(fromSignUp: fromSignUp, canRoute: route != null, fromAddAddress: false, route: route ?? RouteHelper.accessLocation)

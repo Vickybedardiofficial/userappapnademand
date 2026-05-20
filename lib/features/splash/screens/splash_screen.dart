@@ -69,7 +69,7 @@ class SplashScreenState extends State<SplashScreen> {
             ),
           );
           if (isConnected) {
-            print(
+            debugPrint(
               '=========here coming-----1-->> ${Get.find<SplashController>().deeplinkRoute}',
             );
             if (Get.find<SplashController>().deeplinkRoute == null) {
@@ -93,7 +93,7 @@ class SplashScreenState extends State<SplashScreen> {
         Get.find<CartController>().getCartDataOnline();
       }
       // _route();
-      print(
+      debugPrint(
         '=========here coming-----2-->> ${Get.find<SplashController>().deeplinkRoute == null}',
       );
       if (Get.find<SplashController>().deeplinkRoute == null) {

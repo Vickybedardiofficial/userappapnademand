@@ -153,7 +153,7 @@ class _ParcelViewWidgetState extends State<ParcelViewWidget> {
                                 zoneData: responseModel.zoneData,
                               );
 
-                              print('----check----->>> ${parcelController.isPickedUp} // address: ${a.toJson()}');
+                              debugPrint('----check----->>> ${parcelController.isPickedUp} // address: ${a.toJson()}');
                               if(parcelController.isPickedUp!) {
                                 widget.senderAddressController.text = a.address ?? '';
                                 parcelController.setPickupAddress(a, true);
@@ -330,12 +330,16 @@ class _ParcelViewWidgetState extends State<ParcelViewWidget> {
                           widget.senderAddressController.text = suggestion.description ?? '';
                           parcelController.setPickupAddress(modifiedAddress, true);
                           if(widget.senderAddressController.text.isNotEmpty) {
+                            if(!mounted) return;
+                            // ignore: use_build_context_synchronously
                             FocusScope.of(context).requestFocus(streetNode);
                           }
                         } else {
                           widget.receiverAddressController.text = suggestion.description ?? '';
                           parcelController.setDestinationAddress(modifiedAddress, notify: true);
                           if(widget.receiverAddressController.text.isNotEmpty) {
+                            if(!mounted) return;
+                            // ignore: use_build_context_synchronously
                             FocusScope.of(context).requestFocus(streetNode);
                           }
                         }

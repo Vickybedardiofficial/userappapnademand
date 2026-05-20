@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:apna_demand/common/enums/data_source_enum.dart';
 import 'package:apna_demand/common/models/response_model.dart';
 import 'package:apna_demand/features/auth/controllers/auth_controller.dart';
@@ -133,7 +134,7 @@ class SplashController extends GetxController implements GetxService {
       }else if(GetPlatform.isWeb || (loadModuleData && _module != null)) {
         setModule(GetPlatform.isWeb ? splashServiceInterface.getModule() : _module);
       }
-      print('=====deeplink url: $_deeplinkRoute and canRoute: $canRoute');
+      debugPrint('=====deeplink url: $_deeplinkRoute and canRoute: $canRoute');
       if(!canRoute || _deeplinkRoute != null) {
         return;
       }

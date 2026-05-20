@@ -109,7 +109,6 @@ class ConfigModel {
   int? serviceAtProviderLocation;
   int? repeatBooking;
   int? instantBooking;
-  // int? scheduleBookingTimeRestriction;
   AdvanceBooking? advanceBooking;
   bool? confirmationOtpStatus;
   int? bidingStatus;
@@ -123,6 +122,25 @@ class ConfigModel {
   ReferralData? dmReferralData;
   ReferralData? riderReferralData;
   int? customerRoutePreference;
+
+  static int? _parseInt(dynamic value) {
+    if (value == null) return null;
+    if (value is int) return value;
+    if (value is String) return int.tryParse(value);
+    if (value is double) return value.toInt();
+    return null;
+  }
+
+  static bool _parseBool(dynamic value) {
+    if (value == null) return false;
+    if (value is bool) return value;
+    if (value is int) return value == 1;
+    if (value is String) {
+      if (value.toLowerCase() == 'true' || value == '1') return true;
+      return false;
+    }
+    return false;
+  }
 
   ConfigModel({
     this.businessName,
@@ -284,8 +302,8 @@ class ConfigModel {
     toggleDmRegistration = json['toggle_dm_registration'];
     toggleRiderRegistration = json['toggle_rider_registration'];
     toggleStoreRegistration = json['toggle_store_registration'];
-    scheduleOrderSlotDuration = json['schedule_order_slot_duration'] == 0 ? 30 : json['schedule_order_slot_duration'];
-    digitAfterDecimalPoint = json['digit_after_decimal_point'];
+    scheduleOrderSlotDuration = _parseInt(json['schedule_order_slot_duration']) == 0 ? 30 : _parseInt(json['schedule_order_slot_duration']);
+    digitAfterDecimalPoint = _parseInt(json['digit_after_decimal_point']);
     module = json['module'] != null ? ModuleModel.fromJson(json['module']) : null;
     moduleConfig = json['module_config'] != null ? ModuleConfig.fromJson(json['module_config']) : null;
     parcelPerKmShippingCharge = json['parcel_per_km_shipping_charge']?.toDouble();
@@ -299,13 +317,13 @@ class ConfigModel {
     }
     footerText = json['footer_text'];
     downloadUserAppLinks = json['download_user_app_links'] != null ? DownloadUserAppLinks.fromJson(json['download_user_app_links']) : null;
-    loyaltyPointExchangeRate = json['loyalty_point_exchange_rate'];
+    loyaltyPointExchangeRate = _parseInt(json['loyalty_point_exchange_rate']);
     loyaltyPointItemPurchasePoint = json['loyalty_point_item_purchase_point']?.toDouble();
-    loyaltyPointStatus = json['loyalty_point_status'] ;
-    minimumPointToTransfer = json['loyalty_point_minimum_point'];
-    customerWalletStatus = json['customer_wallet_status'];
-    dmTipsStatus = json['dm_tips_status'];
-    refEarningStatus = json['ref_earning_status'];
+    loyaltyPointStatus = _parseInt(json['loyalty_point_status']);
+    minimumPointToTransfer = _parseInt(json['loyalty_point_minimum_point']);
+    customerWalletStatus = _parseInt(json['customer_wallet_status']);
+    dmTipsStatus = _parseInt(json['dm_tips_status']);
+    refEarningStatus = _parseInt(json['ref_earning_status']);
     refundActiveStatus = json['refund_active_status'];
     refEarningExchangeRate = json['ref_earning_exchange_rate']?.toDouble();
     if (json['social_login'] != null) {
@@ -320,13 +338,13 @@ class ConfigModel {
         appleLogin!.add(SocialLogin.fromJson(v));
       });
     }
-    refundPolicyStatus = json['refund_policy'];
-    cancellationPolicyStatus = json['cancelation_policy'];
-    shippingPolicyStatus = json['shipping_policy'];
-    prescriptionStatus = json['prescription_order_status'];
+    refundPolicyStatus = _parseInt(json['refund_policy']);
+    cancellationPolicyStatus = _parseInt(json['cancelation_policy']);
+    shippingPolicyStatus = _parseInt(json['shipping_policy']);
+    prescriptionStatus = _parseBool(json['prescription_order_status']);
     cookiesText = json['cookies_text'];
-    homeDeliveryStatus = json['home_delivery_status'];
-    takeawayStatus = json['takeaway_status'];
+    homeDeliveryStatus = _parseInt(json['home_delivery_status']);
+    takeawayStatus = _parseInt(json['takeaway_status']);
     partialPaymentStatus = json['partial_payment_status'] == 1;
     partialPaymentMethod = json['partial_payment_method'];
     additionalChargeStatus = json['additional_charge_status'] == 1;
@@ -343,10 +361,10 @@ class ConfigModel {
     offlinePaymentStatus = json['offline_payment_status'] == 1;
     guestCheckoutStatus = json['guest_checkout_status'] == 1;
     adminCommission = json['admin_commission']?.toDouble();
-    subscriptionFreeTrialDays = json['subscription_free_trial_days'];
-    subscriptionFreeTrialStatus = json['subscription_free_trial_status'] == 1 ? true : false;
-    subscriptionBusinessModel = json['subscription_business_model'];
-    commissionBusinessModel = json['commission_business_model'];
+    subscriptionFreeTrialDays = _parseInt(json['subscription_free_trial_days']);
+    subscriptionFreeTrialStatus = _parseBool(json['subscription_free_trial_status']);
+    subscriptionBusinessModel = _parseInt(json['subscription_business_model']);
+    commissionBusinessModel = _parseInt(json['commission_business_model']);
     subscriptionFreeTrialType = json['subscription_free_trial_type'];
     countryPickerStatus = json['country_picker_status'] == 1;
     firebaseOtpVerification = json['firebase_otp_verification'] == 1;
@@ -357,22 +375,22 @@ class ConfigModel {
     adminFreeDelivery = json['admin_free_delivery'] != null ? AdminFreeDelivery.fromJson(json['admin_free_delivery']) : null;
     isSmsActive = json['is_sms_active'];
     isMailActive = json['is_mail_active'];
-    parcelCancellationStatus = json['parcel_cancellation_status'];
+    parcelCancellationStatus = _parseInt(json['parcel_cancellation_status']);
     parcelCancellationBasicSetup = json['parcel_cancellation_basic_setup'] != null ? ParcelCancellationBasicSetup.fromJson(json['parcel_cancellation_basic_setup']) : null;
     parcelReturnTimeFee = json['parcel_return_time_fee'] != null ? ParcelReturnTimeFee.fromJson(json['parcel_return_time_fee']) : null;
     websocketEnabled = json['websocket_status'] == 1;
     websocketUrl = json['websocket_url'];
 
     safetyFeatureStatus = json['safety_feature_status'] == 1;
-    safetyFeatureMinimumTripDelayTime = json['ride_safety_delay_time'];
+    safetyFeatureMinimumTripDelayTime = _parseInt(json['ride_safety_delay_time']);
     safetyFeatureMinimumTripDelayTimeType = json['ride_safety_delay_time_format'];
     afterTripCompleteSafetyFeatureActiveStatus = json['safety_feature_after_ride_complete_status'] == 1;
     afterTripCompleteSafetyFeatureSetTime = int.tryParse(json['safety_feature_after_ride_complete_time'].toString());
     afterTripCompleteSafetyFeatureSetTimeFormat = json['safety_feature_after_ride_complete_time_format'];
     safetyFeatureEmergencyGovtNumber = json['emergency_govt_number'];
 
-    reviewStatus = json['review_status'];
-    popularTips = json['popular_tips'];
+    reviewStatus = _parseBool(json['review_status']);
+    popularTips = _parseInt(json['popular_tips']);
     if(json['ride_search_radius'] != null){
       try{
         searchRadius = json['ride_search_radius'].toDouble();
@@ -797,10 +815,10 @@ class SocialMedia {
   });
 
   SocialMedia.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    link = json['link'];
-    status = json['status'];
+    id = ConfigModel._parseInt(json['id']);
+    name = json['name']?.toString();
+    link = json['link']?.toString();
+    status = ConfigModel._parseInt(json['status']);
   }
 
   Map<String, dynamic> toJson() {

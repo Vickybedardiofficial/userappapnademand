@@ -1080,7 +1080,7 @@ Widget offlineView(BuildContext context, OrderController orderController, Expans
 void openDialog(BuildContext context, String imageUrl) => showDialog(
   context: context,
   builder: (BuildContext context) {
-    print("the image url is : $imageUrl");
+    debugPrint("the image url is : $imageUrl");
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radiusLarge)),
       child: Stack(children: [

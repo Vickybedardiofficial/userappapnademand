@@ -62,7 +62,7 @@ class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
-        print('===did pop: $didPop, result: $result');
+        debugPrint('===did pop: $didPop, result: $result');
         if(Get.find<SplashController>().deeplinkRoute != null) {
           Get.find<SplashController>().setDeeplink(null);
           Get.offAllNamed(RouteHelper.getInitialRoute());

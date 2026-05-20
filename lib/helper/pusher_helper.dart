@@ -95,6 +95,11 @@ class PusherHelper{
   late PrivateChannel driverTripCancelled;
   late PrivateChannel driverTripCompleted;
   late PrivateChannel driverPaymentReceived;
+  bool _isDriverAcceptedSubscribed = false;
+  bool _isTripStartedSubscribed = false;
+  bool _isTripCancelledSubscribed = false;
+  bool _isTripCompletedSubscribed = false;
+  bool _isPaymentReceivedSubscribed = false;
 
   void pusherRiderStatus(String tripId){
 
@@ -110,7 +115,8 @@ class PusherHelper{
         },
       ));
 
-      if(pusherDriverAccepted.currentStatus ==  null){
+      if(!_isDriverAcceptedSubscribed){
+        _isDriverAcceptedSubscribed = true;
         pusherDriverAccepted.subscribe();
         pusherDriverAccepted.bind("driver-trip-accepted.$tripId").listen((event) {
           debugPrint('======driver-trip-accepted');
@@ -146,7 +152,8 @@ class PusherHelper{
         },
       ));
 
-      if(driverTripStarted.currentStatus == null){
+      if(!_isTripStartedSubscribed){
+        _isTripStartedSubscribed = true;
         driverTripStarted.subscribe();
         driverTripStarted.bind("driver-trip-started.$tripId").listen((event) {
           debugPrint('======driver-trip-started');
@@ -176,7 +183,8 @@ class PusherHelper{
         },
       ));
 
-      if(driverTripCancelled.currentStatus == null){
+      if(!_isTripCancelledSubscribed){
+        _isTripCancelledSubscribed = true;
         driverTripCancelled.subscribe();
         driverTripCancelled.bind("driver-trip-cancelled.$tripId").listen((event) async{
           debugPrint('======driver-trip-cancelled');
@@ -206,7 +214,8 @@ class PusherHelper{
         },
       ));
 
-      if(driverTripCompleted.currentStatus ==  null){
+      if(!_isTripCompletedSubscribed){
+        _isTripCompletedSubscribed = true;
         driverTripCompleted.subscribe();
         driverTripCompleted.bind("driver-trip-completed.$tripId").listen((event) {
 
@@ -242,7 +251,8 @@ class PusherHelper{
           'Access-Control-Allow-Methods':"PUT, GET, POST, DELETE, OPTIONS"
         },
       ));
-      if(driverPaymentReceived.currentStatus == null){
+      if(!_isPaymentReceivedSubscribed){
+        _isPaymentReceivedSubscribed = true;
         driverPaymentReceived.subscribe();
         driverPaymentReceived.bind("driver-payment-received.$tripId").listen((event) {
           if(Get.find<SplashController>().configModel!.reviewStatus?? false){

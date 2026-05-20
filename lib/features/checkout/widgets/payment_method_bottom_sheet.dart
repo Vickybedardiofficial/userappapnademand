@@ -362,7 +362,7 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
   Widget walletView(CheckoutController checkoutController) {
     double walletBalance = Get.find<ProfileController>().userInfoModel?.walletBalance??0;
     bool? partialPaymentStatus = Get.find<SplashController>().configModel?.partialPaymentStatus;
-    print(" partialPaymentStatus: $partialPaymentStatus");
+    debugPrint(" partialPaymentStatus: $partialPaymentStatus");
     double balance = 0;
     if(walletBalance <= 0 || (widget.paymentModel != null && walletBalance < widget.totalPrice) || (walletBalance < widget.totalPrice && !partialPaymentStatus!)) {
       return const SizedBox();

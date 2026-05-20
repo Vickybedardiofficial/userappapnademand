@@ -147,11 +147,11 @@ import 'package:apna_demand/features/review/domain/repositories/review_repositor
 import 'package:apna_demand/features/review/domain/services/review_service.dart';
 import 'package:apna_demand/features/review/domain/services/review_service_interface.dart';
 import 'package:apna_demand/features/ride_share_module/common/controllers/map_controller.dart';
-import 'package:apna_demand/features/ride_share_module/ride_home/controllers/rideHome_controller.dart';
-import 'package:apna_demand/features/ride_share_module/ride_home/domain/repositories/rideHome_repository.dart';
-import 'package:apna_demand/features/ride_share_module/ride_home/domain/repositories/rideHome_repository_interface.dart';
-import 'package:apna_demand/features/ride_share_module/ride_home/domain/services/rideHome_service.dart';
-import 'package:apna_demand/features/ride_share_module/ride_home/domain/services/rideHome_service_interface.dart';
+import 'package:apna_demand/features/ride_share_module/ride_home/controllers/ride_home_controller.dart';
+import 'package:apna_demand/features/ride_share_module/ride_home/domain/repositories/ride_home_repository.dart';
+import 'package:apna_demand/features/ride_share_module/ride_home/domain/repositories/ride_home_repository_interface.dart';
+import 'package:apna_demand/features/ride_share_module/ride_home/domain/services/ride_home_service.dart';
+import 'package:apna_demand/features/ride_share_module/ride_home/domain/services/ride_home_service_interface.dart';
 import 'package:apna_demand/features/ride_share_module/ride_location/controllers/search_location_controller.dart';
 import 'package:apna_demand/features/ride_share_module/ride_location/domain/repositories/search_location_repository.dart';
 import 'package:apna_demand/features/ride_share_module/ride_location/domain/repositories/search_location_repository_interface.dart';

@@ -90,7 +90,7 @@ class _ParcelCategoryScreenState extends State<ParcelCategoryScreen> {
                             itemName: parcelController.parcelCategoryList![index].name!,
                             description: parcelController.parcelCategoryList![index].description!,
                             onTap: () {
-                              print('=====tappppp========> ${AddressHelper.getUserAddressFromSharedPref()}');
+                              debugPrint('=====tappppp========> ${AddressHelper.getUserAddressFromSharedPref()}');
                               if(AddressHelper.getUserAddressFromSharedPref() == null) {
                                 Get.find<LocationController>().navigateToLocationScreen('home', canRoute: true);
                                 return;

@@ -90,7 +90,7 @@ class NotificationHelper {
       }
       /// For Ride Share
       if (message.data['action'] == 'customer_driver_on_the_way' && pusherDisConnected) {
-        print('=======from notification=====1===');
+        debugPrint('=======from notification=====1===');
         Get.back();
         Get.find<RideController>().getRideDetails(
             message.data['ride_request_id']).then((value) {
@@ -276,6 +276,7 @@ class NotificationHelper {
         if(context == null) {
           return;
         }
+        // ignore: use_build_context_synchronously
         showDialog(context: context, builder: (context) => Center(
           child: NotificationPopUpDialogWidget(payload),
         ));
@@ -697,13 +698,13 @@ class NotificationHelper {
       Get.find<SafetyAlertController>().checkDriverNeedSafety();
       Get.find<RideController>().updateRideCurrentState(RideState.ongoingRide);
       Get.find<RideController>().updateRideController();
-      print('------current route: ${Get.currentRoute}');
+      debugPrint('------current route: ${Get.currentRoute}');
       if(Get.currentRoute != '/MapScreen'){
         _toRoute(formSplash, const MapScreen(fromScreen: MapScreenType.splash));
       }
 
     } else if(data['action'] == 'customer_trip_resumed' || data['action'] == 'customer_trip_paused'){
-      print('-----step---1');
+      debugPrint('-----step---1');
       notificationToRouteNavigate(data['ride_request_id'], formSplash);
 
     } else if(data['action'] == 'payment_successful'){
@@ -743,7 +744,7 @@ class NotificationHelper {
         if (value.statusCode == 200) {
           Get.find<RideController>().biddingList.length != 1 ? Get.back() : null;
 
-          print('======bid gotten=====');
+          debugPrint('======bid gotten=====');
           Get.dialog(
               barrierDismissible: true,
               barrierColor: Colors.black.withValues(alpha:0.5),

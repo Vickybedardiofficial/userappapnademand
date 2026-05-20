@@ -65,6 +65,27 @@ class AuthRepository implements AuthRepositoryInterface{
   }
 
   @override
+  Future<Response> sendOtp({required String emailOrPhone}) async {
+    Map<String, String> data = {
+      "email_or_phone": emailOrPhone,
+    };
+    return await apiClient.postData(AppConstants.sendOtpUri, data, handleError: false);
+  }
+
+  @override
+  Future<Response> verifyOtp({required String emailOrPhone, required String otp}) async {
+    String guestId = getSharedPrefGuestId();
+    Map<String, String> data = {
+      "email_or_phone": emailOrPhone,
+      "otp": otp,
+    };
+    if(guestId.isNotEmpty) {
+      data.addAll({"guest_id": guestId});
+    }
+    return await apiClient.postData(AppConstants.verifyOtpUri, data, handleError: false);
+  }
+
+  @override
   Future<ResponseModel> guestLogin() async {
     ResponseModel responseModel;
     String? deviceToken = await saveDeviceToken();

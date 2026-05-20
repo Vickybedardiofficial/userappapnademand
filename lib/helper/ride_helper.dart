@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:apna_demand/features/ride_share_module/ride_location/domain/models/ride_details_model.dart';
 import 'package:apna_demand/features/splash/controllers/splash_controller.dart';
@@ -13,8 +14,8 @@ class RideHelper {
       } else if (Get.find<SplashController>().configModel?.afterTripCompleteSafetyFeatureSetTimeFormat == 'hour') {
         activeTime = activeTime * 3600;
       }
-      print('======check==2=> $time and $activeTime // format: ${Get.find<SplashController>().configModel?.afterTripCompleteSafetyFeatureSetTimeFormat}');
-      print('======check==3=> ${(Get.find<SplashController>().configModel?.afterTripCompleteSafetyFeatureActiveStatus ?? false)} && ${tripDetails.currentStatus ==  "completed"} && ${tripDetails.type != "parcel"} && ${activeTime > time} && ${tripDetails.customerSafetyAlert == null}');
+      debugPrint('======check==2=> $time and $activeTime // format: ${Get.find<SplashController>().configModel?.afterTripCompleteSafetyFeatureSetTimeFormat}');
+      debugPrint('======check==3=> ${(Get.find<SplashController>().configModel?.afterTripCompleteSafetyFeatureActiveStatus ?? false)} && ${tripDetails.currentStatus ==  "completed"} && ${tripDetails.type != "parcel"} && ${activeTime > time} && ${tripDetails.customerSafetyAlert == null}');
       return (Get.find<SplashController>().configModel?.afterTripCompleteSafetyFeatureActiveStatus ?? false) && tripDetails.currentStatus ==  "completed" &&
           tripDetails.type != "parcel" && activeTime > time && tripDetails.customerSafetyAlert == null ? true : false;
     }else{

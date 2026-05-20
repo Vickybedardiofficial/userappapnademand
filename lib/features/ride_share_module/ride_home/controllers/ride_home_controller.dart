@@ -1,6 +1,6 @@
   import 'dart:async';
 import 'package:get/get.dart';
-import '../domain/services/rideHome_service_interface.dart';
+import '../domain/services/ride_home_service_interface.dart';
   
 class RideHomeController extends GetxController implements GetxService {
   final RideHomeServiceInterface rideHomeServiceInterface;

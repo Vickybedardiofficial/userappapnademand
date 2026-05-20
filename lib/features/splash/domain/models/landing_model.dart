@@ -58,24 +58,32 @@ class LandingModel {
     this.joinDeliveryManStatus,
   });
 
+  static int? _parseInt(dynamic value) {
+    if (value == null) return null;
+    if (value is int) return value;
+    if (value is String) return int.tryParse(value);
+    if (value is double) return value.toInt();
+    return null;
+  }
+
   LandingModel.fromJson(Map<String, dynamic> json) {
-    fixedHeaderTitle = json['fixed_header_title'];
-    fixedHeaderSubTitle = json['fixed_header_sub_title'];
-    fixedHeaderImageFullUrl = json['fixed_header_image_full_url'];
-    fixedModuleTitle = json['fixed_module_title'];
-    fixedModuleSubTitle = json['fixed_module_sub_title'];
-    fixedLocationTitle = json['fixed_location_title'];
-    joinSellerTitle = json['join_seller_title'];
-    joinSellerSubTitle = json['join_seller_sub_title'];
-    joinSellerButtonName = json['join_seller_button_name'];
-    joinSellerButtonUrl = json['join_seller_button_url'];
-    joinDeliveryManTitle = json['join_delivery_man_title'];
-    joinDeliveryManSubTitle = json['join_delivery_man_sub_title'];
-    joinDeliveryManButtonName = json['join_delivery_man_button_name'];
-    joinDeliveryManButtonUrl = json['join_delivery_man_button_url'];
-    downloadUserAppTitle = json['download_user_app_title'];
-    downloadUserAppSubTitle = json['download_user_app_sub_title'];
-    downloadUserAppImageFullUrl = json['download_user_app_image_full_url'];
+    fixedHeaderTitle = json['fixed_header_title']?.toString();
+    fixedHeaderSubTitle = json['fixed_header_sub_title']?.toString();
+    fixedHeaderImageFullUrl = json['fixed_header_image_full_url']?.toString();
+    fixedModuleTitle = json['fixed_module_title']?.toString();
+    fixedModuleSubTitle = json['fixed_module_sub_title']?.toString();
+    fixedLocationTitle = json['fixed_location_title']?.toString();
+    joinSellerTitle = json['join_seller_title']?.toString();
+    joinSellerSubTitle = json['join_seller_sub_title']?.toString();
+    joinSellerButtonName = json['join_seller_button_name']?.toString();
+    joinSellerButtonUrl = json['join_seller_button_url']?.toString();
+    joinDeliveryManTitle = json['join_delivery_man_title']?.toString();
+    joinDeliveryManSubTitle = json['join_delivery_man_sub_title']?.toString();
+    joinDeliveryManButtonName = json['join_delivery_man_button_name']?.toString();
+    joinDeliveryManButtonUrl = json['join_delivery_man_button_url']?.toString();
+    downloadUserAppTitle = json['download_user_app_title']?.toString();
+    downloadUserAppSubTitle = json['download_user_app_sub_title']?.toString();
+    downloadUserAppImageFullUrl = json['download_user_app_image_full_url']?.toString();
     if (json['special_criterias'] != null) {
       specialCriterias = <SpecialCriterias>[];
       json['special_criterias'].forEach((v) {
@@ -83,19 +91,19 @@ class LandingModel {
       });
     }
     downloadUserAppLinks = json['download_user_app_links'] != null ? DownloadUserAppLinks.fromJson(json['download_user_app_links']) : null;
-    availableZoneStatus = json['available_zone_status'];
-    availableZoneTitle = json['available_zone_title'];
-    availableZoneShortDescription = json['available_zone_short_description'];
-    availableZoneImage = json['available_zone_image'];
-    availableZoneImageFullUrl = json['available_zone_image_full_url'];
+    availableZoneStatus = _parseInt(json['available_zone_status']);
+    availableZoneTitle = json['available_zone_title']?.toString();
+    availableZoneShortDescription = json['available_zone_short_description']?.toString();
+    availableZoneImage = json['available_zone_image']?.toString();
+    availableZoneImageFullUrl = json['available_zone_image_full_url']?.toString();
     if (json['available_zone_list'] != null) {
       availableZoneList = <AvailableZoneList>[];
       json['available_zone_list'].forEach((v) {
         availableZoneList!.add(AvailableZoneList.fromJson(v));
       });
     }
-    joinSellerStatus = json['join_seller_status'];
-    joinDeliveryManStatus = json['join_delivery_man_status'];
+    joinSellerStatus = _parseInt(json['join_seller_status']);
+    joinDeliveryManStatus = _parseInt(json['join_delivery_man_status']);
   }
 
   Map<String, dynamic> toJson() {
@@ -157,12 +165,12 @@ class SpecialCriterias {
   });
 
   SpecialCriterias.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    imageFullUrl = json['image_full_url'];
-    status = json['status'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    id = LandingModel._parseInt(json['id']);
+    title = json['title']?.toString();
+    imageFullUrl = json['image_full_url']?.toString();
+    status = LandingModel._parseInt(json['status']);
+    createdAt = json['created_at']?.toString();
+    updatedAt = json['updated_at']?.toString();
     if (json['translations'] != null) {
       translations = <Translations>[];
       json['translations'].forEach((v) {
@@ -208,14 +216,14 @@ class Translations {
   });
 
   Translations.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    translationableType = json['translationable_type'];
-    translationableId = json['translationable_id'];
-    locale = json['locale'];
-    key = json['key'];
-    value = json['value'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    id = LandingModel._parseInt(json['id']);
+    translationableType = json['translationable_type']?.toString();
+    translationableId = LandingModel._parseInt(json['translationable_id']);
+    locale = json['locale']?.toString();
+    key = json['key']?.toString();
+    value = json['value']?.toString();
+    createdAt = json['created_at']?.toString();
+    updatedAt = json['updated_at']?.toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -246,10 +254,10 @@ class DownloadUserAppLinks {
   });
 
   DownloadUserAppLinks.fromJson(Map<String, dynamic> json) {
-    playstoreUrlStatus = json['playstore_url_status'];
-    playstoreUrl = json['playstore_url'];
-    appleStoreUrlStatus = json['apple_store_url_status'];
-    appleStoreUrl = json['apple_store_url'];
+    playstoreUrlStatus = json['playstore_url_status']?.toString();
+    playstoreUrl = json['playstore_url']?.toString();
+    appleStoreUrlStatus = json['apple_store_url_status']?.toString();
+    appleStoreUrl = json['apple_store_url']?.toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -271,10 +279,10 @@ class AvailableZoneList {
   AvailableZoneList({this.id, this.name, this.displayName, this.modules});
 
   AvailableZoneList.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    displayName = json['display_name'];
-    modules = json['modules'].cast<String>();
+    id = LandingModel._parseInt(json['id']);
+    name = json['name']?.toString();
+    displayName = json['display_name']?.toString();
+    modules = json['modules']?.cast<String>() ?? [];
   }
 
   Map<String, dynamic> toJson() {

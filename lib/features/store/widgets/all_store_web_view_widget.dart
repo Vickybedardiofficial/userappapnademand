@@ -59,7 +59,7 @@ class _AllStoreWebViewWidgetState extends State<AllStoreWebViewWidget> {
                     totalSize: storeController.storeModel?.totalSize,
                     offset: storeController.storeModel?.offset,
                     onPaginate: (int? offset) async {
-                      print("--------------->");
+                      debugPrint("--------------->");
                       await storeController.getStoreList(offset!, false);
                     },
                     gridColumns: 3,

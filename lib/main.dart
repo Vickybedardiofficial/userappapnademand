@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:app_links/app_links.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:apna_demand/features/auth/controllers/auth_controller.dart';
 import 'package:apna_demand/features/cart/controllers/cart_controller.dart';
@@ -36,6 +37,10 @@ Future<void> main() async {
 
   if (kIsWeb) {
     usePathUrlStrategy();
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.edgeToEdge,
+      overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom],
+    );
   }
   /*///Pass all uncaught "fatal" errors from the framework to Crashlytics
   FlutterError.onError = (errorDetails) {

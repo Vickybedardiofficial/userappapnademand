@@ -81,6 +81,25 @@ class AuthController extends GetxController implements GetxService {
     return responseModel;
   }
 
+  Future<ResponseModel> sendOtp({required String emailOrPhone}) async {
+    _isLoading = true;
+    update();
+    ResponseModel responseModel = await authServiceInterface.sendOtp(emailOrPhone: emailOrPhone);
+    _isLoading = false;
+    update();
+    return responseModel;
+  }
+
+  Future<ResponseModel> verifyOtp({required String emailOrPhone, required String otp, bool alreadyInApp = false}) async {
+    _isLoading = true;
+    update();
+    ResponseModel responseModel = await authServiceInterface.verifyOtp(emailOrPhone: emailOrPhone, otp: otp, alreadyInApp: alreadyInApp);
+    _getUserAndCartData(responseModel);
+    _isLoading = false;
+    update();
+    return responseModel;
+  }
+
   void resetOtpView({bool isUpdate = true}) {
     _isOtpViewEnable = false;
     if(isUpdate) {

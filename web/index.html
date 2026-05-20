@@ -3,6 +3,13 @@
 <head>
   <base href="/">
 
+  <!-- Resource Hints for faster loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://maps.googleapis.com" crossorigin>
+  <link rel="dns-prefetch" href="https://firebase.googleapis.com">
+  <link rel="dns-prefetch" href="https://www.gstatic.com">
+
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -15,6 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A Multi-vendor Food. Grocery, eCommerce, Pharmacy & Parcel service.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <!--For demo only-->
 <!--  <link rel="canonical" href="https://apnademand.com/" />-->
@@ -31,7 +39,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <meta name="google-signin-client_id" content="491987943015-agln6biv84krpnngdphj87jkko7r9lb8.apps.googleusercontent.com">
 
-  <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+  <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js" defer></script>
 
   <title>ApnaDemand</title>
   <link rel="manifest" href="manifest.json">
@@ -55,7 +63,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNfL9Wdes1bjoGdQ4yOG1BpsQD0CqIj0k"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNfL9Wdes1bjoGdQ4yOG1BpsQD0CqIj0k" defer></script>
 <!--  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>-->
 
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -429,7 +437,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
            serviceWorkerVersion: {{flutter_service_worker_version}},
          },
          onEntrypointLoaded: function(engineInitializer) {
-         let config = { renderer: 'html' };
+         let config = { renderer: 'canvaskit' };
            engineInitializer.initializeEngine(config).then(function(appRunner) {
              if(document.getElementById('splash'))
                document.getElementById('splash').remove();
@@ -450,7 +458,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   </script>
 
-  <script type="module">
+  <script type="module" defer>
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-analytics.js";
     const firebaseConfig = {
